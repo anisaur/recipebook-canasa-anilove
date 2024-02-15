@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Recipe Book</title>
+</head>
+<body style = "background-color: rgb(255, 247, 230);">
+    <h1 style = "font-family: Georgia">    
+        Recipe Book
+    </h1>
+    <h3>
+        {{ name }}
+    </h3>
+
+    <p>
+        {% for ingredient in ingredients %}
+            <li>
+                {{ ingredient.name }}: {{ ingredient.quantity }}
+            </li>
+        {% endfor %}
+    </p>
+    <h6>
+        <a href = '/recipes/list'>
+            Back to Recipe Book
+        </a>
+    </h6>
+    
+</body>
+</html>
