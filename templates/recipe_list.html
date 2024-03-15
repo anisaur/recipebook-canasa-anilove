@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <title>Recipe Book</title>
-</head>
-<body style = "background-color: rgb(255, 247, 230)", ;>
-    <h1 style = "font-family: Georgia">
-            Recipe Book
-    </h1>
-    <p>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recipe Book{% endblock %}
+    {% block heading %}
+    {% endblock heading %}
+{% block content %}
+    <h3 style = "font-family: Georgia; font-weight:100; text-align: center;">  
+        List of Recipes
+    </h3>
         {% for recipe in object_list %}
             <li>
                 <a href = '{{ recipe.get_absolute_url }}'>
                     {{ recipe.name }}
                 </a>
             </li>
-        {% endfor %}
-    </p>
-</body>
-</html>
+        {% endfor %} 
+{% endblock content%}
+    

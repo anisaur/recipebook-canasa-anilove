@@ -1,26 +1,29 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <title>Recipe Book</title>
-</head>
-<body style = "background-color: rgb(255, 247, 230);">
-    <h1 style = "font-family: Georgia">    
-        Recipe Book
-    </h1>
-    <h3>
-        {{ name }}
-    </h3>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recipe Book{% endblock %}
+{% block heading %}
+{% endblock heading %}
+{% block content %}
+        <h3 style = "font-family: Georgia; font-weight:100; text-align: center;"> 
+            Recipe Details
+        </h3>
 
-    <p>
-        {% for ingredient in recipe.ingredients.all %}
-           <li>{{ ingredient.ingredient.name }} - {{ingredient.quantity}}</li> 
-            {% endfor %}
-    </p>
-    <h6>
-        <a href = '/recipes/list'>
-            Back to Recipe Book
-        </a>
-    </h6>
-    
-</body>
-</html>
+        <h3 style="font-style: oblique; border: 3px dotted black; padding: 10px;">
+            {{ recipe.name }}
+        </h3>
+
+        <h4 style = "font-weight: 100;">
+            Made by {{ recipe.author }}
+        </h4>
+
+        <p>
+            {% for ingredient in recipe.ingredients.all %}
+            <li>{{ ingredient.ingredient.name }} - {{ingredient.quantity}}</li> 
+                {% endfor %}
+        </p>
+        <h6>
+            <a href = '/recipes/list'>
+                Back to Recipe Book
+            </a>
+        </h6>
+{% endblock content %}

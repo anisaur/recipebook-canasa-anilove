@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+                <title >
+                    {% block title%}Recipe Book{% endblock %}
+                </title>
+            {% block heading %}
+            {% endblock heading %}
+            <h1 style = "font-family: Georgia; text-align: center;"> 
+                Recipe Book
+            </h1>
+        </head>
+        <body style = "background-color: blanchedalmond; text-align: center;">
+            <div id="content">
+                {% block content %}
+                {% endblock content %}   
+                    {% if request.user.is_authenticated %}
+                        <form method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Logout</button>
+                        </form>
+                    {% else %}
+                        <form method="POST" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Log in</button>
+                        </form>
+                    {% endif %}
+            </div>
+            {% block scripts %}{% endblock %}
+        </body>
+    </html>

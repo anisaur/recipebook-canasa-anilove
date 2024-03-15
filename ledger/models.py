@@ -12,13 +12,15 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length = 100)
+    author = models.CharField(max_length = 100)
+    created_on = models.DateTimeField(auto_now_add = True)
+    updated_on = models.DateTimeField(auto_now = True) #https://www.scaler.com/topics/django/django-datetimefield/
 
     def __str__(self):
         return self.name
     
     def get_absolute_url(self):
         return reverse('ledger:recipe_detail', args=[self.pk])
-
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length = 100)
@@ -27,5 +29,6 @@ class RecipeIngredient(models.Model):
 
     def __str__(self):
         return str(self.quantity + self.ingredient.name)
+    
 
 # Create your models here.
